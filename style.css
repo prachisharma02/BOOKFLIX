@@ -1,0 +1,65 @@
+
+body
+{
+background-image: linear-gradient(rgb(198, 72, 198),rgb(156, 156, 245));
+}
+h1 , h4
+{
+    text-align: center;
+    padding-top: 5%;
+    
+}
+hr
+{
+   border-width: 5px;
+   
+}
+.input{
+width:100%;
+height:5%;
+border: none;
+border-radius: 20px;
+margin: 3% 0 5% 0;
+}
+.ldetails>.label
+{
+    color: rgb(94, 8, 82);
+   margin-bottom: 10%;
+}
+.login
+{
+    margin: auto;
+    margin-top:10%;
+    width:60%;
+    background-color: rgb(216, 180, 249);
+}
+.ldetails
+{
+margin:10%
+}
+.fp
+{
+    float: right;
+    margin: 0;
+}
+.btn
+{
+    
+  margin-top: 10%;
+  width: 100%;
+  height:8% ;
+  border: none;
+  border-radius: 20px;  
+}
+p{
+    text-align: center;
+}
+.icon
+{
+    height: 4%;
+    margin-right: 2%;
+}
+.icons
+{
+    text-align: center;
+}

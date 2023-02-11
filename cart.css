@@ -1,0 +1,75 @@
+table, th, td
+ {
+    margin-left: 350PX;
+    margin-top: 100px;
+    border: 1px solid;
+    border-collapse: collapse;
+   
+  }
+  td
+  {
+    padding: 10px;
+  }
+  table
+  {
+    width: 50%;
+  }
+  .cart_images
+  {
+    height: 100px;
+    width: 100px;
+    margin: 15px;
+    object-fit: contain;
+  }
+  .submit
+  {
+    padding: 10px;
+border: none;
+box-sizing: border-box;
+margin: 5px;
+background-color:rgb(193, 139, 78);
+border-radius: 5px;
+  }
+.continue
+{
+    padding: 10px;
+    border: none;
+    box-sizing: border-box;
+    margin: 5px;
+    background-color:rgb(193, 139, 78);
+    border-radius: 5px;
+    text-decoration: none;
+    color: #000;
+  }
+  .quantity
+  {
+    border: 1px solid black;
+    margin:10px;
+    padding: 5px;
+    height: 40px;
+    width: 160px;
+    border-radius: 5px;
+    
+  }
+  
+  
+.subtotal
+  {
+    margin-left: 350px;
+    display: flex;
+    margin-top: 20px;
+    margin-right: 20px;
+  }
+  strong
+  {
+    color: rgb(114, 86, 54);
+  }
+  .h2{
+    margin-top: 230px;
+    text-align: center;
+  }
+  footer
+  {
+    margin-top: 300px;
+  }
+  

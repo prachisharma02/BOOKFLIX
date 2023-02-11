@@ -1,0 +1,27 @@
+h2
+{
+    text-align: center;
+    color: brown;
+}
+
+.pay
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.row
+{
+    margin: 30px;
+}
+
+a{
+    text-decoration: none;
+    font-size: large;
+}
+.payment
+{
+    color:brown
+}
