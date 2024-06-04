@@ -175,20 +175,30 @@ function remove_cart_item()
 {
     global $con;
     
-    if(isset($_POST['remove_cart']))
+    if (isset($_POST['remove_cart']))
     {
-       foreach ($_POST['removeitem'] as $remove_id)
+        if (isset($_POST['removeitem']) && !empty($_POST['removeitem']))
         {
-            //echo $remove_id;
-            $delete_query="delete from `cart_details` where product_id=$remove_id";
-            $run_delete=mysqli_query($con,$delete_query);
-            if($run_delete)
+            foreach ($_POST['removeitem'] as $remove_id)
             {
-                echo "<script>window.open('cart.php','self')</script>";
+                // Sanitize the $remove_id to prevent SQL injection
+                $remove_id = intval($remove_id);
+                
+                $delete_query = "DELETE FROM `cart_details` WHERE product_id=$remove_id";
+                $run_delete = mysqli_query($con, $delete_query);
+                if ($run_delete)
+                {
+                    echo "<script>window.open('cart.php', 'self')</script>";
+                }
             }
+        }
+        else
+        {
+            echo "No items selected to remove.";
         }
     }
 }
+
 echo $remove_item=remove_cart_item();
 ?>
 
