@@ -1,0 +1,334 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Jun 04, 2024 at 06:52 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `bookflix`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_table`
+--
+
+CREATE TABLE `admin_table` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` varchar(100) NOT NULL,
+  `admin_email` varchar(200) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin_table`
+--
+
+INSERT INTO `admin_table` (`admin_id`, `admin_name`, `admin_email`, `password`) VALUES
+(1, 'Prachi', 'prachips2621@gmail.com', '$2y$10$13MTsUCgB1hTtfaLyMR88.HlYuMVc.5wKfisjpt79qmxCgfAHwn/O'),
+(2, 'Khushi', 'khushi@gmail.com', '$2y$10$5NzO0/T9LWlC4jAfvqoNKOBiCXjeBV/iQFIqr2cqRFRjdibglTnve');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_details`
+--
+
+CREATE TABLE `cart_details` (
+  `product_id` int(11) NOT NULL,
+  `ip_address` varchar(255) NOT NULL,
+  `quantity` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_details`
+--
+
+INSERT INTO `cart_details` (`product_id`, `ip_address`, `quantity`) VALUES
+(12, '::1', 0),
+(19, '::1', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders_pending`
+--
+
+CREATE TABLE `orders_pending` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `invoice_number` int(255) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` int(255) NOT NULL,
+  `order_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders_pending`
+--
+
+INSERT INTO `orders_pending` (`order_id`, `user_id`, `invoice_number`, `product_id`, `quantity`, `order_status`) VALUES
+(1, 2, 1945985042, 11, 1, 'pending'),
+(2, 2, 1135007108, 11, 1, 'pending'),
+(3, 2, 324515741, 11, 1, 'pending'),
+(4, 2, 1569994008, 11, 1, 'pending'),
+(5, 2, 287375215, 11, 1, 'pending'),
+(6, 2, 1659768847, 11, 1, 'pending'),
+(7, 2, 1668735098, 11, 1, 'pending'),
+(8, 2, 833477193, 11, 1, 'pending'),
+(9, 2, 351546388, 11, 1, 'pending'),
+(10, 2, 1875845978, 18, 1, 'pending'),
+(11, 2, 1346361044, 18, 1, 'pending'),
+(12, 10, 450006352, 12, 1, 'pending'),
+(13, 10, 1843747445, 12, 1, 'pending'),
+(14, 10, 1722392674, 12, 1, 'pending'),
+(15, 10, 1055564992, 12, 1, 'pending'),
+(16, 10, 1309407882, 12, 1, 'pending'),
+(17, 10, 1678319518, 12, 1, 'pending'),
+(18, 10, 813295737, 12, 1, 'pending'),
+(19, 10, 1731990583, 19, 1, 'pending'),
+(20, 10, 1894890101, 19, 1, 'pending'),
+(21, 10, 728846764, 19, 1, 'pending'),
+(22, 10, 819073217, 19, 1, 'pending'),
+(23, 10, 1968313742, 19, 1, 'pending'),
+(24, 10, 693418795, 19, 1, 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `product_id` int(11) NOT NULL,
+  `product_title` varchar(100) NOT NULL,
+  `product_description` varchar(255) NOT NULL,
+  `product_keyword` varchar(255) NOT NULL,
+  `product_image1` varchar(255) NOT NULL,
+  `product_image2` varchar(255) NOT NULL,
+  `product_image3` varchar(255) NOT NULL,
+  `product_price` varchar(100) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`product_id`, `product_title`, `product_description`, `product_keyword`, `product_image1`, `product_image2`, `product_image3`, `product_price`, `date`, `status`) VALUES
+(1, ' Atomic Habits ', 'An Easy & Proven Way to Build good habits and break bad ones', ' atomic,good ,habits,easy', 'https://ik.imagekit.io/w8r14tqb9/product-jpeg-500x500.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1674134064395', 'bookflix-logo.png', 'bookflix-logo-removebg-preview.png', '172', '2023-01-19 08:47:22', ' true'),
+(8, ' Alchemist', 'ALCHEMIST By Paulo Coelho', ' paulo ,mind, psychology', 'https://ik.imagekit.io/w8r14tqb9/alchemist.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1674049802359', 'alchemist.jpg', 'alchemist.jpg', '111', '2023-01-19 07:42:03', ' true'),
+(9, ' The Art of Saying NO', 'How To Stand Your Ground, Reclaim Your Time And Energy', ' Want to Read The Art Of Saying NO: How To Stand Your Ground, Reclaim Your Time And Energy, And Refuse To Be Taken For Granted (Without Feeling Guilty! ', 'https://ik.imagekit.io/w8r14tqb9/art_of_saying_no.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1674223346663', 'art of saying no.webp', 'art of saying no.webp', '299', '2023-01-20 08:34:11', ' true'),
+(10, ' Attitude is Everything', 'Change Your Attitude... Change Your Life!', ' Change Your Attitude... Change Your Life!', 'https://ik.imagekit.io/w8r14tqb9/Bsi_540x.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1674223346737', 'Bsi_540x.webp', 'Bsi_540x.webp', '125', '2023-01-20 08:36:22', ' true'),
+(11, ' Make Time', 'How to Focus on What Matters Every Day', ' How to Focus on What Matters Every Day', 'https://ik.imagekit.io/w8r14tqb9/make_time.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1674223346746', 'make time.jpg', 'make time.jpg', '149', '2023-01-20 08:38:45', ' true'),
+(12, ' How to Win Friends ', 'The only book you need to lead you to success', ' The only book you need to lead you to success', 'https://ik.imagekit.io/w8r14tqb9/how_to_win_friends.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1674223347032', '', '', '209', '2024-06-03 06:29:55', ' true'),
+(18, ' Deep Work', 'Rules for Focused Success in a Distracted World', ' Rules for Focused Success in a Distracted World', 'https://ik.imagekit.io/w8r14tqb9/deep_work.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1674223347016', '', '', '238', '2023-01-20 09:17:28', ' true'),
+(19, ' Hyperfocus', 'How to Be More Productive in a World of Distraction', ' How to Be More Productive in a World of Distraction', 'https://ik.imagekit.io/w8r14tqb9/Bookspringindia_540x.webp?ik-sdk-version=javascript-1.4.3&updatedAt=1674223347138', '', '', '222', '2023-01-20 09:19:56', ' true');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_orders`
+--
+
+CREATE TABLE `user_orders` (
+  `order_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `amount_due` int(255) NOT NULL,
+  `invoice_number` int(255) NOT NULL,
+  `total_products` int(255) NOT NULL,
+  `order_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `order_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_orders`
+--
+
+INSERT INTO `user_orders` (`order_id`, `user_id`, `amount_due`, `invoice_number`, `total_products`, `order_date`, `order_status`) VALUES
+(1, 2, 274, 1945985042, 2, '2023-02-15 17:54:35', 'Complete'),
+(4, 2, 274, 1569994008, 2, '2023-02-16 18:37:33', 'Complete'),
+(5, 2, 274, 287375215, 2, '2023-02-17 07:20:06', 'Complete'),
+(6, 2, 274, 1659768847, 2, '2023-03-10 13:47:07', 'Complete'),
+(7, 2, 149, 1668735098, 1, '2023-03-10 13:50:31', 'Complete'),
+(8, 2, 321, 833477193, 2, '2024-01-22 07:42:53', 'Complete'),
+(9, 2, 432, 351546388, 3, '2024-01-28 11:32:25', 'Complete'),
+(10, 2, 670, 1875845978, 4, '2024-05-04 07:55:02', 'Complete'),
+(11, 2, 670, 1346361044, 4, '0000-00-00 00:00:00', 'pending'),
+(12, 10, 791, 450006352, 4, '2024-05-08 09:04:20', 'Complete'),
+(13, 10, 791, 1843747445, 4, '2024-01-28 11:22:41', 'Complete'),
+(14, 10, 791, 1722392674, 4, '0000-00-00 00:00:00', 'pending'),
+(15, 10, 791, 1055564992, 4, '0000-00-00 00:00:00', 'pending'),
+(16, 10, 791, 1309407882, 4, '0000-00-00 00:00:00', 'pending'),
+(17, 10, 791, 1678319518, 4, '0000-00-00 00:00:00', 'pending'),
+(18, 10, 791, 813295737, 4, '0000-00-00 00:00:00', 'pending'),
+(19, 10, 1138, 1731990583, 6, '0000-00-00 00:00:00', 'pending'),
+(20, 10, 966, 1894890101, 5, '0000-00-00 00:00:00', 'pending'),
+(21, 10, 1115, 728846764, 6, '0000-00-00 00:00:00', 'pending'),
+(22, 10, 705, 819073217, 4, '0000-00-00 00:00:00', 'pending'),
+(23, 10, 705, 1968313742, 4, '0000-00-00 00:00:00', 'pending'),
+(24, 10, 431, 693418795, 2, '0000-00-00 00:00:00', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_payment`
+--
+
+CREATE TABLE `user_payment` (
+  `payment_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `invoice_number` int(11) NOT NULL,
+  `amount_due` int(11) NOT NULL,
+  `payment_mode` varchar(255) NOT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_payment`
+--
+
+INSERT INTO `user_payment` (`payment_id`, `order_id`, `invoice_number`, `amount_due`, `payment_mode`, `date`) VALUES
+(4, 4, 1569994008, 274, 'PayPal', '2023-02-17 00:07:33'),
+(5, 5, 287375215, 274, 'Net Banking', '2023-02-17 12:50:06'),
+(6, 6, 1659768847, 274, 'Select Payment Mode', '2023-03-10 19:17:07'),
+(7, 7, 1668735098, 149, 'Cash on Delivery', '2023-03-10 19:20:31'),
+(8, 7, 1668735098, 149, 'PayPal', '2023-03-10 19:21:37'),
+(9, 8, 833477193, 321, 'UPI', '2024-01-22 13:12:53'),
+(10, 13, 1843747445, 791, 'Cash on Delivery', '2024-01-28 16:52:41'),
+(11, 9, 351546388, 432, 'Pay Offline', '2024-01-28 17:02:25'),
+(12, 10, 1875845978, 670, 'Net Banking', '2024-05-04 13:25:02'),
+(13, 12, 450006352, 791, 'Select Payment Mode', '2024-05-08 14:34:20');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_table`
+--
+
+CREATE TABLE `user_table` (
+  `user_id` int(11) NOT NULL,
+  `Username` varchar(20) NOT NULL,
+  `user_email` varchar(100) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `user_ip` varchar(100) NOT NULL,
+  `user_address` varchar(255) NOT NULL,
+  `user_mobile` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_table`
+--
+
+INSERT INTO `user_table` (`user_id`, `Username`, `user_email`, `Password`, `user_ip`, `user_address`, `user_mobile`) VALUES
+(10, 'avinash', 'avi@gmail.com', '$2y$10$EKVfVP8KyD9a1Cnmop11G.Ozc1UQrO2qWcGEHqRdU4OgzPo9QQDkC', '::1', 'abc', '1234'),
+(12, 'Khushi', 'khushi@gmail.com', '$2y$10$krU3EODaz9o.HxIpqX8tLelZahIVCCc4rofrX.gk5a1WHiEc4qgGe', '::1', '', ''),
+(13, 'test', 'test@gmail.com', '$2y$10$2IBOnw/bZVwTliRpQMDDjuxRCXgX3gF986AloW2jHofxOmotfmfka', '::1', 'ghjb', '67890'),
+(14, 'prachi', 'prachi@gmail.com', '$2y$10$lGSYT66k2ewH3wswmHHvJu/ZaognuLDG8L6jyavBiSIH3oH/OJKHq', '::1', 'noida', '12345');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin_table`
+--
+ALTER TABLE `admin_table`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `cart_details`
+--
+ALTER TABLE `cart_details`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `orders_pending`
+--
+ALTER TABLE `orders_pending`
+  ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `user_orders`
+--
+ALTER TABLE `user_orders`
+  ADD PRIMARY KEY (`order_id`);
+
+--
+-- Indexes for table `user_payment`
+--
+ALTER TABLE `user_payment`
+  ADD PRIMARY KEY (`payment_id`);
+
+--
+-- Indexes for table `user_table`
+--
+ALTER TABLE `user_table`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `unique` (`Username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admin_table`
+--
+ALTER TABLE `admin_table`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `orders_pending`
+--
+ALTER TABLE `orders_pending`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `user_orders`
+--
+ALTER TABLE `user_orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT for table `user_payment`
+--
+ALTER TABLE `user_payment`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `user_table`
+--
+ALTER TABLE `user_table`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
